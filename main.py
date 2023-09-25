@@ -43,3 +43,11 @@ fig = px.pie(revenue_by_channel,
              hole=0.6, color_discrete_sequence=px.colors.qualitative.Pastel)
 
 fig.show()
+
+data['roi'] = data['revenue'] / data['cost']
+roi_by_channel = data.groupby('channel')['roi'].mean().reset_index()
+
+fig = px.bar(roi_by_channel, 
+             x='channel', 
+             y='roi', title='Return on Investment (ROI) by Channel')
+fig.show()
