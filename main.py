@@ -34,3 +34,12 @@ fig = px.bar(conversion_by_channel, x='channel',
              title='Conversion Rate by Channel')
 fig.show()
 
+revenue_by_channel = data.groupby('channel')['revenue'].sum().reset_index()
+
+fig = px.pie(revenue_by_channel, 
+             values='revenue', 
+             names='channel', 
+             title='Total Revenue by Channel', 
+             hole=0.6, color_discrete_sequence=px.colors.qualitative.Pastel)
+
+fig.show()
