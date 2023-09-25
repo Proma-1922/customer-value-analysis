@@ -26,3 +26,11 @@ fig = px.bar(cost_by_channel,
              y='cost', 
              title='Customer Acquisition Cost by Channel')
 fig.show()
+
+conversion_by_channel = data.groupby('channel')['conversion_rate'].mean().reset_index()
+
+fig = px.bar(conversion_by_channel, x='channel', 
+             y='conversion_rate', 
+             title='Conversion Rate by Channel')
+fig.show()
+
